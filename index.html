@@ -11,7 +11,18 @@
   <body>
     <div class="container">
       <h1>Pig Latin Translator</h1>
+      <form id="englishForm">
+        <div class ="from-group">
+          <label for="englishSentence">Enter a english sentence: </label>
+          <input id="englishSentence" type="text">
+        </div>
 
+        <button type="submit" class="btn btn-default">Submit!</button>
+      </form>
+
+      <div id="result">
+        <p>The output is: <span class="pigLatin"></span></p>
+      </div>
     </div>
   </body>
 </html>
