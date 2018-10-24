@@ -13,6 +13,12 @@ function checkWordArrayForVowles(letterArray) {
     console.log("func3: " + letterArray);
     letterArray.shift(letterArray);
     console.log("func4: " + letterArray);
+  } else {
+    letterArray.push(saveAllLettersBeforeFirstVowel(letterArray), "a", "y");
+    console.log("func3: " + letterArray);
+    letterArray = killLettersbeforeFirstVowel(letterArray);
+    // letterArray.shift(letterArray);
+    console.log("func4: " + letterArray);
   }
   return letterArray;
 }
@@ -25,19 +31,28 @@ function checkForFirstVowel(letterArray) {
 
 function killLettersbeforeFirstVowel(letterArray) {
   var cutOffIndex = checkForFirstVowel(letterArray);
-  return letterArray.slice(cutOffIndex);
+  return [letterArray.slice(cutOffIndex)];
 }
 
+function saveAllLettersBeforeFirstVowel(letterArray) {
+  var cutOffIndex = checkForFirstVowel(letterArray);
+  var choppedOff = letterArray.slice(0,cutOffIndex);
+  return choppedOff;
+}
 
 $(document).ready(function() {
   $("form#englishForm").submit(function(event) {
     var englishSentenceArray = $("input#englishSentence").val();
     var workingArray = turnWordIntoArray(englishSentenceArray);
 console.log("check1st vowel: " + checkForFirstVowel(workingArray));
-console.log("trimmed: " + killLettersbeforeFirstVowel(workingArray));
+console.log("cut off letters before 1st vowel: " + killLettersbeforeFirstVowel(workingArray));
+console.log("these were the letters before the 1st vowel: " + saveAllLettersBeforeFirstVowel(workingArray));
+
 console.log("1st: " + workingArray);
 
     var resultsArray = checkWordArrayForVowles(workingArray);
+//now check for first vowel
+
 
 console.log("2nd: "+ resultsArray);
 
