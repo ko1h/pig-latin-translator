@@ -17,9 +17,15 @@ function checkWordArrayForVowles(letterArray) {
   return letterArray;
 }
 
-function checkForFirstVowel (letterArray) {
+function checkForFirstVowel(letterArray) {
   var tempWord = letterArray.join("");
-  var cutOff = tempWord.search(/.a.e.i.o.u.y/g)
+  var cutOff = tempWord.search(/[.a.e.i.o.u.y]/g)
+  return cutOff;
+}
+
+function killLettersbeforeFirstVowel(letterArray) {
+  var cutOffIndex = checkForFirstVowel(letterArray);
+  return letterArray.slice(cutOffIndex);
 }
 
 
@@ -27,7 +33,8 @@ $(document).ready(function() {
   $("form#englishForm").submit(function(event) {
     var englishSentenceArray = $("input#englishSentence").val();
     var workingArray = turnWordIntoArray(englishSentenceArray);
-
+console.log("check1st vowel: " + checkForFirstVowel(workingArray));
+console.log("trimmed: " + killLettersbeforeFirstVowel(workingArray));
 console.log("1st: " + workingArray);
 
     var resultsArray = checkWordArrayForVowles(workingArray);
